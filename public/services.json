@@ -1,31 +1,25 @@
 [
     {
-        "id":1,
         "name":"child support",
         "img":"https://i.ibb.co/GpQ6WVn/bird-House.png"
     },
     {
-        "id":2,
         "name":"Refuge Shelter",
         "img":"https://i.ibb.co/d6s86sQ/food-Charity.png"
     },
     {
-        "id":3,
         "name":"Food Charity",
         "img":"https://i.ibb.co/SVq6vzy/music-Lessons.png"
     },
     {
-        "id":4,
         "name":"Organize books ",
         "img":"https://i.ibb.co/sqPGzMn/refuse-Shelter.png"
     },
     {
-        "id":5,
         "name":"Host a clothing swap.",
         "img":"https://i.ibb.co/LhfN07k/vote-Register.png"
     },
     {
-        "id":6,
         "name":"Host a river clean-up.",
         "img":"https://i.ibb.co/Tr0vxpB/stuffed-Animals.png"
     }
