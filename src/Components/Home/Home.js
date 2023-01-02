@@ -8,7 +8,7 @@ import { Col, Row } from 'react-bootstrap';
 const Home = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://serverlostnotdead-production.up.railway.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

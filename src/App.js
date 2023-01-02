@@ -12,6 +12,7 @@ import RequireAuth from './Components/RequireAuth/RequireAuth';
 import VolunteerRegistartion from './Components/VolunteerRegistartion/VolunteerRegistartion';
 import AddService from './Components/AddService/AddService';
 import OrderDetails from './Components/OrderDetails/OrderDetails';
+import UpdateService from './Components/UpdateService/UpdateService';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/addService' element={<AddService></AddService>}></Route>
         <Route path='/reg4volunteer' element={<VolunteerRegistartion></VolunteerRegistartion>}></Route>
         <Route path='/orderDetails' element={<OrderDetails></OrderDetails>}></Route>
+        <Route path='/updateService/:id' element={<UpdateService></UpdateService>}></Route>
 
 
         <Route path='/order/:id' element={

@@ -6,7 +6,7 @@ const Order = () => {
     const { id } = useParams();
     const [service, setService] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`https://serverlostnotdead-production.up.railway.app/services/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [])

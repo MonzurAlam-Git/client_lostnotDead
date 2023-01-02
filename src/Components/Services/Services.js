@@ -1,16 +1,25 @@
 import axios from 'axios';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import "./Services.css"
 
 const Services = ({ service }) => {
-    const { _id, name, img } = service;
+    const { name, img } = service;
+    const [user] = useAuthState(auth);
+
     const navigate = useNavigate();
 
     const handleOrder = () => {
-        navigate('/orderDetails');
-        axios.post(`http://localhost:5000/orderDetails`, service)
+        const order = {
+            name: name,
+            img: img,
+            email: user.email,
+        }
+        // navigate('/orderDetails');
+        axios.post(`https://serverlostnotdead-production.up.railway.app/orderDetails`, order)
             .then(res => console.log(res)
             )
     }

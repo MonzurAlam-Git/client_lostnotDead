@@ -1,17 +1,44 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import "../../../src/Components/experiment.css"
 
 const OrderDetails = () => {
     // const [user] = useAuthState();
+    const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/orderDetails')
+        fetch('https://serverlostnotdead-production.up.railway.app/orderDetails')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
+
+    const handleUpdate = id => {
+        navigate(`/updateService/${id}`)
+    }
+
+    const handleDelete = id => {
+        axios.delete(`https://serverlostnotdead-production.up.railway.app/orderDetails/${id}`)
+            .then(result => {
+                const restOrders = orders.filter(order => order._id !== id)
+                setOrders(restOrders);
+            })
+
+        // fetch(`https://serverlostnotdead-production.up.railway.app/orderDetails/${id}`, {
+        //     method: "DELETE"
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         const restOrders = orders.filter(order => order._id !== id)
+        //         setOrders(restOrders);
+        //     })
+    }
+
+
+
 
     return (
         <div>
@@ -28,8 +55,8 @@ const OrderDetails = () => {
                                     to additional content. This content is a little bit longer.
                                 </Card.Text>
                                 <Button variant='success w-50'> Checkout</Button> <br />
-                                <Button variant='danger mt-1 w-50' > Delete </Button>
-                                <Button variant='info mt-1 w-50' > Update</Button>
+                                <Button onClick={() => handleDelete(order._id)} variant='danger mt-1 w-50' > Delete </Button>
+                                <Button variant='info mt-1 w-50' onClick={() => handleUpdate(order._id)} > Update</Button>
                             </Card.ImgOverlay>
                         </Card>
                     </Col>

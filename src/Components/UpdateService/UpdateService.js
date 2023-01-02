@@ -1,18 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 
-const AddService = () => {
+const UpdateService = () => {
+    const { id } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [newService, setNewService] = useState({});
+    const [service, setService] = useState({});
+
     const onSubmit = data => {
-        setNewService(data);
-        axios.post('https://serverlostnotdead-production.up.railway.app/services', newService).then(res => console.log(res.data)).catch(err => console.log(err))
+        // setService(data);
+        console.log(id);
+        axios.put(`https://serverlostnotdead-production.up.railway.app/orderDetails/${id}`, data)
+            .then(res => console.log(res))
     };
 
     return (
-        <div className='container'>
-            <h2 className="text-warning bg-dark w-50 mx-auto p-2">Feel Free to Add Your Service</h2>
+        <div>
+            <h2 className="text-warning bg-dark w-50 mx-auto p-2">Feel Free to Edit Your Service</h2>
             <form className='mt-5 w-50 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <input className='mb-2 w-50 border-1' placeholder='Type the service you will provide'  {...register("name")} /> <br />
 
@@ -27,4 +32,4 @@ const AddService = () => {
     );
 };
 
-export default AddService;
+export default UpdateService;
